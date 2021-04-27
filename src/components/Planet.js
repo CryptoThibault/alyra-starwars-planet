@@ -1,7 +1,11 @@
-const Planet = ({ planet }) => {
+const Planet = ({ name, population, climate }) => {
   return (
     <li>
-      {planet}
+      <h1>{name}</h1>
+      <p>Population</p>
+      <p>{population}</p>
+      <p>Climat</p>
+      <p>{climate}</p>
     </li>
   );
 };

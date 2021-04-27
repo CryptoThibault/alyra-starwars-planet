@@ -4,11 +4,11 @@ import Scroll from './Scroll'
 
 const PlanetApp = () => {
   const [planetList, setPlanetList] = useState([])
-  const [size, setSize] = useState(1)
+  const [size, setSize] = useState(10)
 
   useEffect(() => {
     for (let i = 1; i < size + 1; i++) {
-      const url = `https://swapi.dev/api/planets/${i}` //Cross-origin ... (error) 
+      const url = `https://swapi.dev/api/planets/${i}/`
       fetch(url)
         .then((response) => {
           if (!response.ok) {
@@ -18,7 +18,12 @@ const PlanetApp = () => {
         })
         .then((data) => {
           console.log(data)
-          setPlanetList([...planetList, data])
+          setPlanetList(...planetList, {
+            name: data.name,
+            population: data.population,
+            climate: data.climate
+          })
+          console.log(planetList)
         })
         .catch((error) => {
           alert(error.message)
@@ -29,8 +34,8 @@ const PlanetApp = () => {
   return (
     <div>
       <ul>
-        {planetList.map((el) => {
-          return <Planet planet={el} />
+        {planetList.map(el => {
+          <Planet name={el.name} population={el.population} climate={el.climate} />
         })}
       </ul>
       <Scroll size={size} setSize={setSize} />
