@@ -1,17 +1,20 @@
-const Planets = ({ planetList }) => {
-  return (<ul>
-    { planetList.map(({ name, population, climate }) => {
-      return (
-        <li key={name}>
-          <h1>{name}</h1>
-          <p>Population</p>
-          <p>{population}</p>
-          <p>Climate</p>
-          <p>{climate}</p>
-        </li>
-      );
-    })}
-  </ul>)
+const Planets = ({ planets }) => {
+  return (
+    <ul>
+      { planets.map(({ name, population, climate }) => {
+        return (
+          <li key={name} className="col-md-6  col-lg-4 col-xl-3 mb-4">
+            <article className="bg-warning p-3">
+              <h1>{name}</h1>
+              <p>Population</p>
+              <p>{population}</p>
+              <p>Climate</p>
+              <p>{climate}</p>
+            </article>
+          </li>
+        );
+      })}
+    </ul>)
 
 };
 

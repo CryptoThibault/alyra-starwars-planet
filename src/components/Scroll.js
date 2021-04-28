@@ -1,7 +1,7 @@
-const Scroll = ({ size, setSize }) => {
+const Scroll = ({ page, setPage }) => {
   return (
     <div>
-      <button className="btn btn-dark" onClick={() => setSize(size + 1)}>Suivantes</button>
+      <button className="btn btn-dark" onClick={() => setPage(page + 1)}>Suivantes</button>
     </div>
   );
 };

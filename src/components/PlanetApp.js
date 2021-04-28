@@ -3,10 +3,11 @@ import Planets from './Planets'
 import Scroll from './Scroll'
 
 const PlanetApp = () => {
-  const [planetList, setPlanetList] = useState([])
-  const [size, setSize] = useState(10)
+  const [planets, setPlanets] = useState([])
+  const [page, setPage] = useState(1)
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
-    const url = `https://swapi.dev/api/planets/`
+    const url = `https://swapi.dev/api/planets/?page=${page}`
     fetch(url)
       .then((response) => {
         if (!response.ok) {
@@ -15,15 +16,19 @@ const PlanetApp = () => {
         return response.json()
       })
       .then((data) => {
-        setPlanetList(data.results)
-        console.log(planetList)
+        setPlanets(planets => [...planets, ...data.results])
+        setLoading(false)
+        console.log(planets)
       })
-  }, [planetList, size])
+  }, [page])
 
   return (
-    <div>
-      <Planets planetList={planetList} />
-      <Scroll size={size} setSize={setSize} />
+    <div className="row" >
+      {loading && (
+        <div className="mb-4 text-center p-3">loading...</div>
+      )}
+      <Planets planets={planets} />
+      <Scroll page={page} setPage={setPage} />
     </div>
   );
 };
