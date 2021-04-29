@@ -29,9 +29,6 @@ const PlanetApp = () => {
           <div className="mb-4 text-center p-3">loading...</div>
         )}
         <Planets planets={planets} />
-        {page === 3 && (
-          <div className="bg-dark text-white p-3">All the planets has been listed.</div>
-        )}
         <Scroll page={page} setPage={setPage} />
       </div>
     </div>
