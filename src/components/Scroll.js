@@ -1,9 +1,6 @@
 const Scroll = ({ page, setPage }) => {
-  return (
-    <div>
-      <button className="btn btn-dark" onClick={() => setPage(page + 1)}>Suivantes</button>
-    </div>
-  );
+  if (page !== 3) { return (<button className="btn btn-dark" onClick={() => setPage(page + 1)} disabled={page === 3}>Suivantes</button>) }
+
 };
 
 export default Scroll;

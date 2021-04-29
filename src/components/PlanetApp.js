@@ -18,17 +18,22 @@ const PlanetApp = () => {
       .then((data) => {
         setPlanets(planets => [...planets, ...data.results])
         setLoading(false)
-        console.log(planets)
       })
   }, [page])
 
   return (
-    <div className="row" >
-      {loading && (
-        <div className="mb-4 text-center p-3">loading...</div>
-      )}
-      <Planets planets={planets} />
-      <Scroll page={page} setPage={setPage} />
+    <div className="container py-5">
+      <h1 className="mb-5">Planètes dans l'univers star wars</h1>
+      <div className="row" >
+        {loading && (
+          <div className="mb-4 text-center p-3">loading...</div>
+        )}
+        <Planets planets={planets} />
+        {page === 3 && (
+          <div className="bg-dark text-white p-3">All the planets has been listed.</div>
+        )}
+        <Scroll page={page} setPage={setPage} />
+      </div>
     </div>
   );
 };

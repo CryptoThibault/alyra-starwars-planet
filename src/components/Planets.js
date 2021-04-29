@@ -1,6 +1,6 @@
 const Planets = ({ planets }) => {
   return (
-    <ul>
+    <ul className="list-unstyled">
       { planets.map(({ name, population, climate }) => {
         return (
           <li key={name} className="col-md-6  col-lg-4 col-xl-3 mb-4">
